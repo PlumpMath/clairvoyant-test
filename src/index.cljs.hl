@@ -1,0 +1,21 @@
+(page "index.html"
+  (:require
+   [clairvoyant.core :as trace :include-macros true]
+   [tailrecursion.hoplon.reload :refer [reload-all]]))
+
+(reload-all 1000)
+
+(trace/trace-forms {:tracer trace/default-tracer}
+  (defn add
+    [a b]
+    (+ a b)))
+
+(add 1 2)
+
+
+(mx '(defn add [a b] (+ a b)))
+
+(html
+  (head)
+  (body
+    (h1 "Hello, World!")))
